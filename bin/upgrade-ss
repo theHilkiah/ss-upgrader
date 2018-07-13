@@ -5,12 +5,12 @@ use SKYW\Upgrader\Cmds\Command;
 use SKYW\Upgrader\Apps\Application;
 
 if(!class_exists(Command::class) || !class_exists(Application::class)){
-  if(($v = realpath(__DIR__.'/../autoload.php'))) require_once $v;
-  elseif(($v = realpath(__DIR__.'/../../autoload.php'))) require_once $v;
-  elseif(($v = realpath(__DIR__.'/../../../autoload.php'))) require_once $v;
-  elseif(($v = realpath(__DIR__.'/../../../../autoload.php'))) require_once $v;
-  elseif(($v = realpath(__DIR__.'/../../../../../autoload.php'))) require_once $v;
-  elseif(($v = realpath(__DIR__.'/../../../../../../autoload.php'))) require_once $v;
+  if(($v = realpath(__DIR__.'/../vendor/autoload.php'))) require_once $v;
+  elseif(($v = realpath(__DIR__.'/../../vendor/autoload.php'))) require_once $v;
+  elseif(($v = realpath(__DIR__.'/../../../vendor/autoload.php'))) require_once $v;
+  elseif(($v = realpath(__DIR__.'/../../../../vendor/autoload.php'))) require_once $v;
+  elseif(($v = realpath(__DIR__.'/../../../../../vendor/autoload.php'))) require_once $v;
+  elseif(($v = realpath(__DIR__.'/../../../../../../vendor/autoload.php'))) require_once $v;
   else throw new Exception("No autoloader is available", 1);
 }
 
