@@ -1,6 +1,7 @@
 <?php  
 
-  $autoloaders[] = realpath(__DIR__."/../autoload.php");
+  $autoloaders[] = realpath(__DIR__."/vendor/autoload.php");
+  $autoloaders[] = realpath(__DIR__."/../vendor/autoload.php");
   $autoloaders[] = realpath(__DIR__."/../vendor/autoload.php");
   $autoloaders[] = realpath(__DIR__."/../../vendor/autoload.php");
   $autoloaders[] = realpath(__DIR__."/../../../vendor/autoload.php");
