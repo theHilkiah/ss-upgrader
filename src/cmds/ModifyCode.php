@@ -52,17 +52,17 @@ class ModifyCode extends Command {
 
         $search_n_replace = [
             '/(\b(.*? )([a-z]+ )|static\s+)\$/si' => [
-                'modifying static variables to private', 'private static $'
+                'modifying all static variables to private', 'private static $'
             ],
             '/can(.+?)\(\$member\s+=\s+(null|NULL)\s*\)/msi' =>
             [
                'adding $context = [] to "can*" functions', 'can$1($member=NULL, $context = [])'
             ],
            '/\barray\s*\((\s*(.*?)\s*)\)/msi' => [
-               "ShortHand for arrays", '[$1]'
+               "Writing shortHand for arrays, i.e. with '[]'", '[$1]'
             ],
             '/(class\s+(.+?)\s+extends\s+(?:.+?)\s*)(private\s+static\s+\$db)/msi' => [
-                'Adding db table_name to classes', '$1\n\private static $table_name = "$2"\n$3'
+                'Adding $db table_name to classes', '$1\n\private static $table_name = "$2"\n$3'
             ]
         ];
 
