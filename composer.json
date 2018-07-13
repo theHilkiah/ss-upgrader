@@ -16,5 +16,7 @@
             "SKYW\\Upgrader\\": "src/"
         }
     },
-    "bin": ["bin/upgrade-ss"]
+    "bin": ["bin/upgrade-ss"],
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
