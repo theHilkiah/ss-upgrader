@@ -1,6 +1,7 @@
 #!/usr/bin/env php
 <?php
 
+
 if(!class_exists(SSUpgrader\Apps\Application::class)){
   if(($v = realpath(__DIR__.'/../vendor/autoload.php'))) require_once $v;
   elseif(($v = realpath(__DIR__.'/../../vendor/autoload.php'))) require_once $v;
@@ -11,10 +12,7 @@ if(!class_exists(SSUpgrader\Apps\Application::class)){
   else print Application::class;
 }
 
-use SSUpgrader\Cmds\Command;
-use SSUpgrader\Apps\Application;
-
-$app = new Application();
+$app = new SSUpgrader\Apps\Application();
 
 $commands = $app->getAllCommands();
 
