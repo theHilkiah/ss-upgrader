@@ -1,11 +1,11 @@
 <?php
 
-namespace SKYW\Upgrader\Apps;
+namespace SSUpgrade\Upgrader\Apps;
 
-use SKYW\Upgrader\Cmds\CleanFiles;
-use SKYW\Upgrader\Cmds\ModifyCode;
-use SKYW\Upgrader\Cmds\SplitClasses;
-use SKYW\Upgrader\Cmds\UpgradeSS;
+use SSUpgrade\Upgrader\Cmds\CleanFiles;
+use SSUpgrade\Upgrader\Cmds\ModifyCode;
+use SSUpgrade\Upgrader\Cmds\SplitClasses;
+use SSUpgrade\Upgrader\Cmds\UpgradeSS;
 use Symfony\Component\Console\Application as SymApp;
 
 class Application extends SymApp
