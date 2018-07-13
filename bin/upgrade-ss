@@ -1,8 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-use SKYW\Upgrader\Cmds\Command;
-use SKYW\Upgrader\Apps\Application;
+use SSUpgrade\Upgrader\Cmds\Command;
+use SSUpgrade\Upgrader\Apps\Application;
 
 if(!class_exists(Command::class) || !class_exists(Application::class)){
   if(($v = realpath(__DIR__.'/../vendor/autoload.php'))) require_once $v;
@@ -11,7 +11,7 @@ if(!class_exists(Command::class) || !class_exists(Application::class)){
   elseif(($v = realpath(__DIR__.'/../../../../vendor/autoload.php'))) require_once $v;
   elseif(($v = realpath(__DIR__.'/../../../../../vendor/autoload.php'))) require_once $v;
   elseif(($v = realpath(__DIR__.'/../../../../../../vendor/autoload.php'))) require_once $v;
-  else throw new Exception("No autoloader is available", 1);
+  else print Application::class;
 }
 
 $app = new Application();
