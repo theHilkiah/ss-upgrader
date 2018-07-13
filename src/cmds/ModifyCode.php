@@ -54,12 +54,15 @@ class ModifyCode extends Command {
                 return "\n\tprivate static \$$match[4]=";
             },
             '/can(.+?)\(\$member\s+=\s+(null|NULL)\s*\)/mi' => function($match){
-                //'modifying static variables to private'
+                //modifying 'can*' methods to include 'array $context''
                 return 'can'.$match[1].'($member=NULL, $context = [])';
             },
             '/\barray\s*\((\s*(.*?)\s*)\)/msi' => function($match){
                 //"ShortHand for arrays"
                 return "[$match[1]]";
+            },
+            '/(private\s+static\s+\$table_name\s+=\s+"(.+?)"\;)/msi' => function($match){
+                return "";
             },
             '/^(class\s+(.+?)\s+extends\s+(?:.+?))(\s*private\s+static\s+\$db\s*=\s*)/msi' => function($match){
                 //'Adding db table_name to classes',
