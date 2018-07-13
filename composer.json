@@ -8,7 +8,7 @@
         "email": "hilmak01@gmail.com"
     }],
     "require": {
-        "symfony/console": "^4.1",
+        "symfony/console": "^4",
         "silverstripe/upgrader": "^1"
     },
     "autoload": {
