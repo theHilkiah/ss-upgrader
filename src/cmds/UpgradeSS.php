@@ -14,7 +14,7 @@ class UpgradeSS extends Command {
 
     public function configure()
     {
-        $this->setName('ss')
+        $this->setName('upgrade')
              ->setDescription('Upgrade silverstripe code using silverstripe upgrader')
              ->setHelp('This command allows you to clean residue files...')
              ->addArgument('path', InputArgument::REQUIRED, 'The path of the file/folder to split')

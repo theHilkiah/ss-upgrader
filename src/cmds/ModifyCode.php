@@ -48,37 +48,29 @@ class ModifyCode extends Command {
 
         $data = file_get_contents($file);
 
-        $count = 0; $matches = [];
-
         $search_n_replace = [
-            '/(\b(.*? )([a-z]+ )|static\s+)\$/si' => [
-                'modifying static variables to private', 'private static $'
-            ],
-            '/can(.+?)\(\$member\s+=\s+(null|NULL)\s*\)/msi' =>
-            [
-               'adding $context = [] to "can*" functions', 'can$1($member=NULL, $context = [])'
-            ],
-           '/\barray\s*\((\s*(.*?)\s*)\)/msi' => [
-               "ShortHand for arrays", '[$1]'
-            ],
-            '/(class\s+(.+?)\s+extends\s+(?:.+?)\s*)(private\s+static\s+\$db)/msi' => [
-                'Adding db table_name to classes' => '$1\n\private static $table_name = "$2"\n$3'
-            ]
+            '/(\b(.*? )([a-z]+ )|static\s+)\$(.+?)\=/mi' => function($match){
+                //'modifying static variables to private'
+                return "\n\tprivate static \$$match[4]=";
+            },
+            '/can(.+?)\(\$member\s+=\s+(null|NULL)\s*\)/mi' => function($match){
+                //'modifying static variables to private'
+                return 'can'.$match[1].'($member=NULL, $context = [])';
+            },
+            '/\barray\s*\((\s*(.*?)\s*)\)/msi' => function($match){
+                //"ShortHand for arrays"
+                return "[$match[1]]";
+            },
+            '/^(class\s+(.+?)\s+extends\s+(?:.+?))(\s*private\s+static\s+\$db\s*=\s*)/msi' => function($match){
+                //'Adding db table_name to classes',
+                if(stripos($match[1], 'Controller') !== false) return $match[0];
+                return "$match[1]\n\n\tprivate static \$table_name = \"$match[2]\";\n$match[3]";
+            }
         ];
+        
 
-        foreach ($search_n_replace as $pattern => $replacer) {
-            $count += preg_match_all($pattern, $data, $matches);
-        }
-
-        if($count === 0) return $this->output;
         $this->output->writeLn(["$file"]);
-        foreach($search_n_replace as $search => $replacements){
-            list($why, $replace) = $replacements;
-            if($why !== NULL){
-                $this->output->writeLn([" -- $why..."]);
-            }            
-            $data = preg_replace($search, $replace, $data);
-        }
+        $data = preg_replace_callback_array($search_n_replace, $data);
         $data = file_put_contents($file, $data);
         return $this->output;
     }

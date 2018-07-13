@@ -11,10 +11,7 @@ if(!class_exists(SSUpgrader\Apps\Application::class)){
   else print Application::class;
 }
 
-use SSUpgrader\Cmds\Command;
-use SSUpgrader\Apps\Application;
-
-$app = new Application();
+$app = new SSUpgrader\Apps\Application();
 
 $commands = $app->getAllCommands();
 

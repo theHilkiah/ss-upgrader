@@ -5,6 +5,7 @@ namespace SSUpgrader\Apps;
 use SSUpgrader\Cmds\CleanFiles;
 use SSUpgrader\Cmds\ModifyCode;
 use SSUpgrader\Cmds\SplitClasses;
+use SSUpgrader\Cmds\AllAtOnce;
 use SSUpgrader\Cmds\UpgradeSS;
 use Symfony\Component\Console\Application as SymApp;
 
@@ -23,7 +24,8 @@ public function getAllCommands()
         CleanFiles::class,
         ModifyCode::class,
         SplitClasses::class,
-        UpgradeSS::class
+        UpgradeSS::class,
+        AllAtOnce::class
     ];
   }
 }
