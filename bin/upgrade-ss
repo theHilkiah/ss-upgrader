@@ -1,8 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-use SSUpgrade\Upgrader\Cmds\Command;
-use SSUpgrade\Upgrader\Apps\Application;
+use SSUpgrader\Cmds\Command;
+use SSUpgrader\Apps\Application;
 
 if(!class_exists(Command::class) || !class_exists(Application::class)){
   if(($v = realpath(__DIR__.'/../vendor/autoload.php'))) require_once $v;
