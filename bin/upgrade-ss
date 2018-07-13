@@ -1,6 +1,7 @@
 #!/usr/bin/env php
 <?php
 
+
 if(!class_exists(SSUpgrader\Apps\Application::class)){
   if(($v = realpath(__DIR__.'/../vendor/autoload.php'))) require_once $v;
   elseif(($v = realpath(__DIR__.'/../../vendor/autoload.php'))) require_once $v;
