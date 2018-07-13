@@ -60,6 +60,9 @@ class ModifyCode extends Command {
             ],
            '/\barray\s*\((\s*(.*?)\s*)\)/msi' => [
                "ShortHand for arrays", '[$1]'
+            ],
+            '/(class\s+(.+?)\s+extends\s+(?:.+?)\s*)(private\s+static\s+\$db)/msi' => [
+                'Adding db table_name to classes' => '$1\n\private static $table_name = "$2"\n$3'
             ]
         ];
 
