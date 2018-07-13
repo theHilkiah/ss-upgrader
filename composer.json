@@ -9,7 +9,7 @@
     }],
     "require": {
         "symfony/console": "^4.1",
-        "silverstripe/upgrader": "dev-master"
+        "silverstripe/upgrader": "^1"
     },
     "autoload": {
         "psr-4": {
