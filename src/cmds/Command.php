@@ -1,6 +1,6 @@
 <?php
 
-namespace SSUpgrade\Upgrader\Cmds;
+namespace SSUpgrader\Cmds;
 
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
