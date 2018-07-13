@@ -17,6 +17,6 @@
         }
     },
     "bin": ["bin/upgrade-ss"],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
