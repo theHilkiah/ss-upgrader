@@ -1,12 +1,10 @@
 #!/usr/bin/env php
 <?php
 
-namespace SSUpgrade\Upgrader;
-
 use SSUpgrade\Upgrader\Cmds\Command;
 use SSUpgrade\Upgrader\Apps\Application;
 
-if(!class_exists(Cmds\Command::class) || !class_exists(Apps\Application::class)){
+if(!class_exists(Command::class) || !class_exists(Application::class)){
   require_once realpath(__DIR__."/../autoload.php"))
 }
 
