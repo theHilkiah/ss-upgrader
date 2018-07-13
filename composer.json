@@ -1,6 +1,6 @@
 {
     "name": "thehilkiah/ss-upgrader",
-    "description": "Module for company-wide catastrophic events!",
+    "description": "Customized Sliverstripe Upgrader used with silverstripe/upgrader package!",
     "type": "library",
     "license": "MIT",
     "authors": [{
