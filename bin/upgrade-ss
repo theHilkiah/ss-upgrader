@@ -3,7 +3,6 @@
 
 require_once realpath(__DIR__."/../autoload.php");
 
-use SSUpgrade\Upgrader\Cmds\Command;
 use SSUpgrade\Upgrader\Apps\Application;
 
 $app = new Application();
