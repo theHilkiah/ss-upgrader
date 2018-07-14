@@ -1,0 +1,24 @@
+{
+    "name": "thehilkiah/ss-upgrader",
+    "description": "Customized Sliverstripe Upgrader used with silverstripe/upgrader package!",
+    "type": "library",
+    "license": "MIT",
+    "authors": [{
+        "name": "Hilkiah Makemo",
+        "email": "hilmak01@gmail.com"
+    }],
+    "require": {
+        "symfony/console": "^4",
+        "silverstripe/upgrader": "^1"
+    },
+    "autoload": {
+        "psr-4": {
+            "SSUpgrader\\": "src/"
+        }
+    },
+    "bin": [
+        "bin/upgrade-ss"
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
