@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "TheHilkiah\SSUpgrader\\": "src/"
+            "TheHilkiah\\SSUpgrader\\": "src/"
         }
     },
     "bin": [
