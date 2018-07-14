@@ -1,6 +1,6 @@
 <?php
 
-namespace SSUpgrader\Cmds;
+namespace TheHilkiah\SSUpgrader\Cmds;
 
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputArgument;
