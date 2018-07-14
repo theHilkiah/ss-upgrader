@@ -16,7 +16,10 @@ foreach ($paths as $path) {
         break;
     }
 }
-$app = new SSUpgrader\Apps\Application();
+
+use TheHilkiah\SSUpgrader\Apps\Application;
+
+$app = new Application();
 
 $commands = $app->getAllCommands();
 
