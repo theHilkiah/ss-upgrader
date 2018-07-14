@@ -1,12 +1,12 @@
 <?php
 
-namespace SSUpgrader\Apps;
+namespace TheHilkiah\SSUpgrader\Apps;
 
-use SSUpgrader\Cmds\CleanFiles;
-use SSUpgrader\Cmds\ModifyCode;
-use SSUpgrader\Cmds\SplitClasses;
-use SSUpgrader\Cmds\AllAtOnce;
-use SSUpgrader\Cmds\UpgradeSS;
+use TheHilkiah\SSUpgrader\Cmds\CleanFiles;
+use TheHilkiah\SSUpgrader\Cmds\ModifyCode;
+use TheHilkiah\SSUpgrader\Cmds\SplitClasses;
+use TheHilkiah\SSUpgrader\Cmds\AllAtOnce;
+use TheHilkiah\SSUpgrader\Cmds\UpgradeSS;
 use Symfony\Component\Console\Application as SymApp;
 
 class Application extends SymApp
