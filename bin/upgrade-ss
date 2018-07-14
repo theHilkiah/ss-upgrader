@@ -2,7 +2,7 @@
 <?php
 
 
-$paths = [
+$autoloaders = [
     __DIR__ . "/../autoload.php",
     __DIR__ . "/../../autoload.php",
     __DIR__ . "/../vendor/autoload.php",
@@ -11,8 +11,8 @@ $paths = [
     __DIR__ . "/../../../../vendor/autoload.php",
 ];
 
-foreach ($paths as $path) {
-    if ($path = realpath($path)) {
+foreach ($autoloaders as $loader) {
+    if (($path = realpath($loader)) !== false) {
         require_once $path;
         break;
     }
