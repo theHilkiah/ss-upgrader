@@ -61,22 +61,22 @@ class ModifyCode extends Command {
     private function callbackReplace($file, $data)
     {
         $data = preg_replace_callback_array($regex_n_callback = [
-            '/(\b(.*? )([a-z]+ )|static\s+)\$((.+?)\=)/mi' => function($match){
-                //'modifying static variables to private'
-                return "\n\tprivate static \$$match[4]";
-            },
-            '/(class\s+(.+?)\s+extends\s+(?:.+?))\s*\{/mi' => function($match){
-                if(stripos($match[2], 'Controller') !== false) return $match[0];
-                return "$match[1]\n\n\tprivate static \$table_name = '$match[2]';";
-            },
+//             '/(\b(.*? )([a-z]+ )|static\s+)\$((.+?)\=)/mi' => function($match){
+//                 //'modifying static variables to private'
+//                 return "\n\tprivate static \$$match[4]";
+//             },
+//             '/(class\s+(.+?)\s+extends\s+(?:.+?))\s*\{/mi' => function($match){
+//                 if(stripos($match[2], 'Controller') !== false) return $match[0];
+//                 return "$match[1]\n\n\tprivate static \$table_name = '$match[2]';";
+//             },
             '/can(.+?)\(\$member\s+=\s+(null|NULL)\s*\)/mi' => function($match){
                 //'modifying static variables to private'
                 return 'can'.$match[1].'($member=NULL, $context = [])';
             },
-            '/\barray\s*\((\s*(.*?)\s*)\)/msi' => function($match){
-                //"ShortHand for arrays"
-                return "[$match[1]]";
-            }
+//             '/\barray\s*\((\s*(.*?)\s*)\)/msi' => function($match){
+//                 //"ShortHand for arrays"
+//                 return "[$match[1]]";
+//             }
         ], $data);
 
         // foreach ($regex_n_callback as $regex => $callback) {
