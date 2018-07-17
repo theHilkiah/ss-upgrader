@@ -65,9 +65,9 @@ class ModifyCode extends Command {
                 //'modifying static variables to private'
                 return "\n\tprivate static \$$match[2]";
             },
-            '/(class\s+(.+?)\s+extends\s+(?:.+?))\s*\{/mi' => function($match){
-                if(stripos($match[2], 'Controller') !== false) return $match[0];
-                return "$match[1]\n\n\tprivate static \$table_name = '$match[2]';";
+            '/(private\s+static\s+\$db\s+=)/mi' => function($match) use($file){
+                $table_name = str_replace('.php', '', basename($file));
+                return "\n\tprivate static \$table_name = '$table_name';\n\t$match[1]";
             },
             '/can(.+?)\(\$member\s+=\s+(null|NULL)\s*\)/mi' => function($match){
                 //'modifying static variables to private'
@@ -91,12 +91,11 @@ class ModifyCode extends Command {
         if(stripos($tableName, 'Controller') !== false) return $data;
 
         $search_n_replace = [
-            '/(private static \$db\s*=)/msi' => function($m){
-                return 'private static $table_name = "'.$tableName."\";\n\t$m[1]";
-            }
+            'function Links()' => 'function Links($value = NULL)',
+            'function Link()' => 'function Link($value = NULL)'
         ];
         foreach ($search_n_replace as $search => $replace) {
-            $data = preg_replace($search, $replace, $data);
+            $data = str_irreplace($search, $replace, $data);
         }
         return $data;
     }
