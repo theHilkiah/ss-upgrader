@@ -31,7 +31,7 @@ abstract class Command extends SymCommand
             $files = glob(trim($path, $DS).$DS."*");
             array_walk($files, [$this, 'workOnPath']);
         } else {
-            $this->output->write("***********");
+            $this->output->writeLn(["***********"]);
             $this->workOnFile($path, $this->output);
             $dir  = pathinfo($path, PATHINFO_DIRNAME);
         }
