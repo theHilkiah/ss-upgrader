@@ -49,8 +49,8 @@ class UpgradeSS extends Command {
         $this->workOnFile($path);
 
         $this->output->writeLn(['Upgrading code to match SS latest framework...']);
-        $this->output->writeLn(['--- '.exec("upgrade-code upgrade $this->path -w")]);
         $this->output->writeLn(['--- '.exec("upgrade-code inspect $this->path -w")]);
+        $this->output->writeLn(['--- '.exec("upgrade-code upgrade $this->path -w")]);
         $this->output->writeLn(['--- '.exec("upgrade-code reorganise -w")]);
         $this->output->writeLn(['--- '.exec("upgrade-code recompose -w")]);
 
