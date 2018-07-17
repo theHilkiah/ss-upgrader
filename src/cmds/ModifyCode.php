@@ -60,13 +60,13 @@ class ModifyCode extends Command {
 
     private function callbackReplace($file, $data)
     {
-        $data = preg_replace_callback_array($regex_n_callback = [
+        $regex_n_callback = [
             '/([a-z]+\s+static|static)\s+(\$(.+?))\s+=/mi' => function($match){
                 //'modifying static variables to private'
                 return "\n\tprivate static \$$match[2]";
             },
             '/(private\s+static\s+\$db\s+=)/mi' => function($match) use($file){
-                $table_name = str_replace('.php', '', basename($file));
+                $table_name = str_replace('.php', '', pathinfo($file, PATHINFO_BASENAME));
                 return "\n\tprivate static \$table_name = '$table_name';\n\t$match[1]";
             },
             '/can(.+?)\(\$member\s+=\s+(null|NULL)\s*\)/mi' => function($match){
@@ -77,18 +77,16 @@ class ModifyCode extends Command {
                 //"ShortHand for arrays"
                 return "[$match[1]]";
             }
-        ], $data);
+        ];
 
-        // foreach ($regex_n_callback as $regex => $callback) {
-        //     $data = preg_replace_callback($regex, $callback, $data);
-        // }
+        foreach ($regex_n_callback as $regex => $callback) {
+            $data = preg_replace_callback($regex, $callback, $data);
+        }
         return $data;
     }
 
     private function searchNreplace($file, $data)
     {
-        $tableName = pathinfo($file, PATHINFO_FILENAME);
-        if(stripos($tableName, 'Controller') !== false) return $data;
 
         $search_n_replace = [
             'function Links()' => 'function Links($value = NULL)',
