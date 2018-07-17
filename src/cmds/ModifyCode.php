@@ -93,7 +93,7 @@ class ModifyCode extends Command {
             'function Link()' => 'function Link($value = NULL)'
         ];
         foreach ($search_n_replace as $search => $replace) {
-            $data = str_irreplace($search, $replace, $data);
+            $data = str_ireplace($search, $replace, $data);
         }
         return $data;
     }
